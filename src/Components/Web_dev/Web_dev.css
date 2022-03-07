@@ -1,0 +1,10 @@
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: block;
+}
+.profile {
+    object-fit: cover;
+}
+.testimonial-pic{
+    height: 50px;
+    width: 50px;
+}
