@@ -225,17 +225,17 @@ export default function Navbar() {
             </li>
 
             <li class="nav-item mr-2">
-              <a class="nav-link hvr-underline-from-center" href="/portfolio">
+              <Link class="nav-link hvr-underline-from-center" to="/portfolio">
                 Portfolio
-              </a>
+              </Link>
             </li>
             <li class="nav-item mr-2">
-              <a class="nav-link hvr-underline-from-center " href="/blog">
+              <Link class="nav-link hvr-underline-from-center " to="/blog">
                 Blog
-              </a>
+              </Link>
             </li>
             <li class="nav-item dropdown mr-3">
-              <a
+              <Link
                 class="nav-link dropdown-toggle hvr-underline-from-center "
                 href="/about"
                 id="navbarDropdownMenuLink"
@@ -244,7 +244,7 @@ export default function Navbar() {
                 aria-expanded="false"
               >
                 About Us
-              </a>
+              </Link>
               <ul
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
