@@ -25,7 +25,6 @@ import Term from './Components/Term/Term';
 import Web from './Components/Web_dev/Web_dev';
 import Whoweserve from './Components/Who_We_Serve/Whoweserve';
 import About from './Components/About/About';
-// import NewAbout from './Components/NewAbout/NewAbout';
 import WebDev from './Components/Web_dev/Web_dev';
 import ProductList from './Components/Printing/ProductLists';
 import Glasscase from './Components/Printing/Glasscase';
@@ -33,6 +32,7 @@ import Test from './Components/Test/Test';
 import ProductView from './Components/Printing/ProductView';
 import NewNavBar from './Components/NewNavBar/NewNavBar'
 import ComingSoon from './Components/ComingSoon/ComingSoon';
+import NewAboutUs from './Components/NewAboutUs/NewAboutUs';
 
 
 
@@ -69,7 +69,8 @@ function App() {
           <Route path='/store' component={Store} />
           <Route path='/term' component={Term} />
           <Route path='/web' component={Web} />
-          <Route path='/whoweserve' component={Whoweserve} />
+          {/* <Route path='/whoweserve' component={Whoweserve} /> */}
+          <Route path='/aboutus' component={NewAboutUs} />
           <Route path='/category' component={WebDev} />
           <Route path='/pagination' component={Pagination} />
           <Route path='/productlists' component={ProductList} />

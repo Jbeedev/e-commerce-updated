@@ -251,12 +251,12 @@ export default function Navbar() {
               >
                 <li>
                   {" "}
-                  <a
+                  <Link
                     class="dropdown-item drop-hover hvr-grow-shadow-edit "
-                    href="/whoweserve"
+                    to="/aboutus"
                   >
                     Who we Serve
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
