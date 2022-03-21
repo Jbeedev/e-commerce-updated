@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li class="nav-item  pt-3">
-          <Link class="nav-link  text-white " to="#">
+          <Link class="nav-link  text-white " to="/mktcomingsoon">
             Portal
           </Link>
         </li>

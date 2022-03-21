@@ -7,7 +7,7 @@ function OrderLoggedIn() {
 
                     {/* ////The commented code below will show when the user log in ////*/}
 
-
+                <div className='row'>
                     <div class="form-group col-md-6 ">
                         <label class="order-label-cust" for="scope">Scope of Work</label>
                         <textarea name="" class="form-control" id="" cols="30" rows="4"></textarea>
@@ -59,8 +59,7 @@ function OrderLoggedIn() {
                 
 
                 {/*//// End of the commented code /////*/}
-
-
+                </div>
                 {/* <!-- Modal --> */}
                 <div class="modal fade" id="clickAndUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -90,6 +89,9 @@ function OrderLoggedIn() {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-center mt-4">            
+                    <button type="submit" class={`order-submit hvr-bounce-to-right`}>Place Your Order</button>
                 </div>
             </form>
         </>
