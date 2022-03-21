@@ -1,0 +1,17 @@
+.aboutsizing{
+    margin-top: -5px; 
+    max-height: 30%;
+    }
+    .aboutcontain:hover .overlay{
+        display: block;
+    opacity: 0.8;
+    min-height: 50vh;
+    top: 0;
+    transition: .5s ease;
+    }
+    .aboutoverlay{
+        display: none;
+    }
+    .aboutpicture{
+        display: flex;
+    }

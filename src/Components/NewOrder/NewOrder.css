@@ -1,0 +1,60 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+/* .text{
+    display: inline;
+    width: 100%;
+  } */
+    
+  .read-or-hide{
+    color: rgb(192,192,192);
+    cursor: pointer;
+  }
+  .order-dis-hide{
+      display: none;
+  }
+  /* .flex{
+      display: flex;
+  } */
+  .order-fname-input{
+      width: 100%;
+  }
+  .order-in-text {  
+    padding: 10px;
+    border: 2px solid rgb(238, 238, 238);
+    border-radius: 20px;
+    border-bottom:1px solid rgb(44, 42, 44);
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    width: 200%
+  }
+  .oder-in-text1 {
+    padding: 10px;
+    border:0; 
+    border-radius: 20px;
+    border-bottom:1px solid rgb(44, 42, 42);
+    width: 200%
+}
+input:focus{
+    outline: none;
+}
+
+.order-select {
+    padding: 10px;
+    border: 2px solid rgb(238, 238, 238);
+    border-radius: 10px;
+    border-bottom:1px solid rgb(44, 42, 44);
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    width:90%;
+    outline: 0;  
+}
+.city{
+    display: flex;
+    
+} 
+.order-in-text2 {
+    border:0; 
+    border-radius: 20px;
+    border-bottom:1px solid rgb(44, 42, 42);
+    width: 100%;
+}
+
