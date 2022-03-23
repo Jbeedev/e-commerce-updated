@@ -7,7 +7,6 @@ import Blog from './Components/Blog/Blog';
 import Shop from './Components/Shop/Shop';
 import Shirt from './Components/Shirt/Shirt';
 import Products from './Components/Products/Product';
-// import Home from './Components/Home/Home';
 import Home from './Components/NewHome/NewHome';
 import ProductCat from './Components/Printing/Product_Category';
 import Pagination from './Components/Printing/Print_pagination';
@@ -34,9 +33,6 @@ import NewNavBar from './Components/NewNavBar/NewNavBar'
 import ComingSoon from './Components/ComingSoon/ComingSoon';
 import NewAboutUs from './Components/NewAboutUs/NewAboutUs';
 
-
-
-// import ScrollTop from './Components/ScrollTop';
 
 
 function App() {
@@ -69,7 +65,6 @@ function App() {
           <Route path='/store' component={Store} />
           <Route path='/term' component={Term} />
           <Route path='/web' component={Web} />
-          {/* <Route path='/whoweserve' component={Whoweserve} /> */}
           <Route path='/aboutus' component={NewAboutUs} />
           <Route path='/category' component={WebDev} />
           <Route path='/pagination' component={Pagination} />

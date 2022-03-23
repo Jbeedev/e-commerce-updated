@@ -34,8 +34,6 @@ const Reviews = ({ reviews }) => {
       setPagenumber(selected);
     }
 
-    
-    
   return (
     <div>
       {displayReviews}
