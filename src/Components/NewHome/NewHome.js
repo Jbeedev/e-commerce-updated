@@ -52,7 +52,7 @@ const Home = () => {
 
       {/* <!-- Landing Imgs --> */}
 
-      <div>
+      <div className="mt-5">
         <Slider {...settings}>
           <div className="aj-img ">
             <img

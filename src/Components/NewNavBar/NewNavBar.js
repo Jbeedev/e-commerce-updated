@@ -87,13 +87,13 @@ export default function Navbar() {
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item mr-3">
-              <a
+              <Link
                 class="nav-link active  hvr-underline-from-center  "
-                href="/"
+                to="/"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
             </li>
 
             <li class="nav-item dropdown mr-3">
@@ -242,6 +242,7 @@ export default function Navbar() {
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                to="/"
               >
                 About Us
               </Link>
@@ -261,9 +262,9 @@ export default function Navbar() {
               </ul>
             </li>
             <li class="nav-item mr-2">
-              <a class="nav-link hvr-underline-from-center " href="/contact">
+              <Link class="nav-link hvr-underline-from-center " to="/contact">
                 Contact Us
-              </a>
+              </Link>
             </li>
 
             <div
@@ -287,7 +288,7 @@ export default function Navbar() {
               </div>
             </div>
           </ul>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse mb-2" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item ">
                 <Link
@@ -311,13 +312,13 @@ export default function Navbar() {
               </li>
 
               <li class="nav-item dropdown">
-                <a
+                <Link
                   class="nav-link hvr-underline-from-center  nav-btn-portal  sign-in  "
                   style={{ color: "#29abe2;" }}
-                  href="login.html"
+                  to="/login"
                 >
                   Account
-                </a>
+                </Link>
                 <i
                   data-toggle="dropdown"
                   class="fas fa-angle-down solution-angle d-block d-lg-none"
@@ -326,22 +327,24 @@ export default function Navbar() {
                   class="dropdown-menu "
                   aria-labelledby="navbarDropdownMenuLinks"
                 >
-                  <a
+                  <Link
                     class="dropdown-item drop-hover hvr-grow-shadow-edit "
-                    href="Signin.html"
+                    to="/signin"
                   >
                     Log in
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     class="dropdown-item drop-hover hvr-grow-shadow-edit "
-                    href="signup.html"
+                    to="signup"
                   >
                     Register
-                  </a>
+                  </Link>
                 </div>
               </li>
             </ul>
           </div>
+
+
         </div>
       </nav>
 

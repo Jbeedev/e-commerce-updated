@@ -10,6 +10,7 @@ import Shirt1 from "../assets/Images/banner-image.jpg";
 import Shirt2 from "../assets/Images/vehicle-branding-images.png";
 import Shirt3 from "../assets/Images/hard-cover-notepad.jpg";
 import Shirt4 from "../assets/Images/Bottle.png";
+import Reviews from "./Reviews";
 
 const Products = () => {
   const [toggle, setToggle] = useState(1);
@@ -47,6 +48,63 @@ const Products = () => {
 
     setQuantityVal(parseInt(selected.options[selected.selectedIndex].value)); //quantity amount
   };
+
+  const [reviews, setReviews] = useState([
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 1,
+    },
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 1,
+    },
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 1,
+    },
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 1,
+    },
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 1,
+    },
+    {
+      user: "Kushimo",
+      product: "Redmi",
+      message: "Nice design with good battery. I love it.",
+      id: 2,
+    },
+    {
+      user: "Labake",
+      product: "Magic Mug",
+      message: "Beautiful.",
+      id: 3,
+    },
+    {
+      user: "Jaybee",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 4,
+    },
+    {
+      user: "Ahmad",
+      product: "Hp EliteBook",
+      message: "The phone is a slick and strong",
+      id: 5,
+    },
+  ]);
 
   return (
     <div>
@@ -558,23 +616,6 @@ const Products = () => {
                             <span class="hidden-sm-up"></span>
                             <span class="hidden-xs-down">Reviews</span>
                           </p>
-                          {/* <li>
-                            <p
-                              class={
-                                toggle === 4
-                                  ? "nav-link active req-sm-up"
-                                  : "nav-link req-sm-up"
-                              }
-                              onClick={() => toggleTab(4)}
-                              data-toggle="tab"
-                              role="tab"
-                            >
-                              <span class="hidden-sm-up"></span>
-                              <span class="hidden-xs-down">
-                                Additional Description
-                              </span>
-                            </p>
-                          </li> */}
                         </li>
                         <li class="nav-item text-center">
                           <p
@@ -587,6 +628,21 @@ const Products = () => {
                           >
                             <span class="hidden-sm-up"></span>
                             <span class="hidden-xs-down">Upload</span>
+                          </p>
+                        </li>
+                        <li class="nav-item text-center">
+                          <p
+                            class={
+                              toggle === 4 ? "nav-link active" : "nav-link"
+                            }
+                            onClick={() => toggleTab(4)}
+                            data-toggle="tab"
+                            role="tab"
+                          >
+                            <span class="hidden-sm-up"></span>
+                            <span class="hidden-xs-down">
+                              Additional Description
+                            </span>
                           </p>
                         </li>
                       </ul>
@@ -678,146 +734,52 @@ const Products = () => {
                         <div
                           class={
                             toggle === 2
-                              ? "tab-pane tabs-content-active active pt-2"
-                              : "tab-pane tabs-content pt-2"
+                              ? "tab-pane tabs-content-active active "
+                              : "tab-pane tabs-content "
                           }
                           id="review"
                           role="tabpanel"
                         >
-                          <div class="row">
-                            <div class=" col-md-12">
-                              <div class="p-3">
-                                <h4 class=" real-gen-color ">
-                                  Be the first to review “Business Cards”
-                                </h4>
+                          <div class="card">
+                            <div class="card-header">
+                              Verified Customer Feedback
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-5">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    Verified Ratings(500)
+                                  </div>
+                                  <div
+                                    class="card text-white bg-secondary mb-3"
+                                    style={{ maxWidth: "18rem" }}
+                                  >
+                                    <div class="card-body">
+                                      4.2/5
+                                      <div>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star-half"></i>
+                                      </div>
+                                      <div>{425} verified ratings</div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
 
-                              <table width="100%">
-                                <div class="col-md-9 col-md-offset-0">
-                                  <tr>
-                                    <td width="77%">
-                                      <div class="">
-                                        <form
-                                          class="form-horizontal"
-                                          action="#."
-                                          method="post"
-                                        >
-                                          {/* <!-- Name input--> */}
-                                          <div class="form-group">
-                                            <label
-                                              class="col-md-3 control-label real-gen-color"
-                                              for="name"
-                                            >
-                                              Full Name
-                                            </label>
-                                            <div class="col-md-9">
-                                              <input
-                                                id="name"
-                                                name="name"
-                                                type="text"
-                                                placeholder="Your name"
-                                                class="form-control"
-                                              />
-                                            </div>
-                                          </div>
-
-                                          {/* <!-- Email input--> */}
-                                          <div class="form-group">
-                                            <label
-                                              class="col-md-3 control-label real-gen-color"
-                                              for="email"
-                                            >
-                                              Your E-mail
-                                            </label>
-                                            <div class="col-md-9">
-                                              <input
-                                                id="email"
-                                                name="email"
-                                                type="text"
-                                                placeholder="Your email"
-                                                class="form-control"
-                                              />
-                                            </div>
-                                          </div>
-
-                                          {/* <!-- Message body --> */}
-                                          <div class="form-group">
-                                            <label
-                                              class="col-md-3 control-label real-gen-color"
-                                              for="message"
-                                            >
-                                              Your message
-                                            </label>
-                                            <div class="col-md-9">
-                                              <textarea
-                                                class="form-control"
-                                                id="message"
-                                                name="message"
-                                                placeholder="Please enter your feedback here..."
-                                                rows="5"
-                                              ></textarea>
-                                            </div>
-                                          </div>
-
-                                          {/* <!-- Rating --> */}
-                                          <div class="form-group">
-                                            <label
-                                              class="col-md-3 control-label real-gen-color"
-                                              for="email"
-                                            >
-                                              <p class="counterW">
-                                                score:
-                                                <span class="scoreNow">3</span>
-                                                out of <span>5</span>
-                                              </p>
-                                            </label>
-                                            <div class="col-md-9">
-                                              <ul class="ratingW">
-                                                <li class="on">
-                                                  <Link href="javascript:void(0);">
-                                                    <div class="star"></div>
-                                                  </Link>
-                                                </li>
-                                                <li class="on">
-                                                  <Link href="javascript:void(0);">
-                                                    <div class="star"></div>
-                                                  </Link>
-                                                </li>
-                                                <li class="on">
-                                                  <Link href="javascript:void(0);">
-                                                    <div class="star"></div>
-                                                  </Link>
-                                                </li>
-                                                <li>
-                                                  <Link href="javascript:void(0);">
-                                                    <div class="star"></div>
-                                                  </Link>
-                                                </li>
-                                                <li>
-                                                  <Link href="javascript:void(0);">
-                                                    <div class="star"></div>
-                                                  </Link>
-                                                </li>
-                                              </ul>
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group mt-5">
-                                            <div class="col-md-10 text-center">
-                                              <button
-                                                type="submit"
-                                                class="description-box hvr-bounce-to-right "
-                                              >
-                                                Submit
-                                              </button>
-                                            </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </td>
-                                  </tr>
+                              <div class="col-sm-7">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    Comments from Verified Purchase
+                                  </div>
+                                  <Reviews
+                                    reviews={reviews}
+                                    title="All Products"
+                                  />
                                 </div>
-                              </table>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -855,7 +817,7 @@ const Products = () => {
 
                         <div
                           class={
-                            toggle === 2
+                            toggle === 4
                               ? "tab-pane tabs-content-active active pt-2"
                               : "tab-pane tabs-content pt-2"
                           }

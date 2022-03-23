@@ -28,7 +28,7 @@ import About from './Components/About/About';
 import WebDev from './Components/Web_dev/Web_dev';
 import ProductList from './Components/Printing/ProductLists';
 import Glasscase from './Components/Printing/Glasscase';
-import Test from './Components/Test/Test';
+// import Test from './Components/Test/Test';
 import ProductView from './Components/Printing/ProductView';
 import NewNavBar from './Components/NewNavBar/NewNavBar'
 import ComingSoon from './Components/ComingSoon/ComingSoon';
@@ -75,7 +75,7 @@ function App() {
           <Route path='/pagination' component={Pagination} />
           <Route path='/productlists' component={ProductList} />
           <Route path='/glasscase' component={Glasscase} />
-          <Route path='/test' component={ Test } />
+          {/* <Route path='/test' component={ Test } /> */}
           <Route path='/viewall' component={ProductView} />
           <Route path='/comingsoon' component={ComingSoon}/>
         </Switch>

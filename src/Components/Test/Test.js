@@ -1,246 +1,1171 @@
-// import { Link } from 'react-router-dom'
-import "./Test.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
-import React, { Component } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import ProductBg from "../assets/Images/Printing-Services.png";
+import BannerImg from "../assets/Images/banner-image.jpg";
+import TshirtImg from "../assets/Images/t-shirt-design.jpg";
+import FlyerImg from "../assets/Images/Bill-board.png";
+import Shirt1 from "../assets/Images/banner-image.jpg";
+import Shirt2 from "../assets/Images/vehicle-branding-images.png";
+import Shirt3 from "../assets/Images/hard-cover-notepad.jpg";
+import Shirt4 from "../assets/Images/Bottle.png";
 
-import SlideImg1 from "../assets/Images/TenPlus_Banner02.png";
-import SlideImg2 from "../assets/Images/TenPlusBanner002.png";
-import SlideImg3 from "../assets/Images/TenPlus_Banner02.png";
-import SlideImg4 from "../assets/Images/TenPlus-Banner-003.png";
+const Products = () => {
+  
+  const [toggle, setToggle] = useState(1);
 
-const Test = () => {
-  const [count, setCount] = useState(30000);
-  const [designTxt, setDesignTxt] = useState('');
+  const toggleTab = (index) => {
+    setToggle(index);
+  };
+
+  const [checkbox, setCheckbox] = useState(false);
+  const [radio, setRadio] = useState(false);
+
+  const [optionsTab, setOptionsTab] = useState(1);
+
+  const changeToggle = (index) => {
+    setOptionsTab(index);
+  };
+
+  const [haveDesign, setHaveDesign] = useState("");
+
+  //Add to cart logic
+
+  const basePrice = 30000;
+
+  const [addToCart, setAddToCart] = useState(0);
+  const addToCartHandler = (e) => {
+    setAddToCart(parseInt(e.target.value));
+  };
+  //getting the quanntiy and quantity price
   const [quantityTxt, setQuantityTxt] = useState(0);
-  const [select, setSelect] = useState(30000);
-  const [total, setTotal] = useState(0);
+  const [quantityVal, setQuantityVal] = useState(0);
 
-  const setDesign = (val) => {
-    setDesignTxt(val);
-  };
-  const increasecountHandle = () => {
-    let count = 30000;
-    setCount(count + 10000);
-  };
-  const decreasecountHandle = () => {
-    //
-    let count = 30000;
-    setCount(count + 20000);
+  const quantityHandler = (selected) => {
+    const selectedText = selected.options[selected.selectedIndex].text;
+    setQuantityTxt(selectedText.split(" - ")[1]); //number of quantity
+
+    setQuantityVal(parseInt(selected.options[selected.selectedIndex].value)); //quantity amount
   };
 
-  // Add to cart logic with select
-const [thichnessPrice, setThicknessPrice] = useState(0);
+  const [comments, setComments] = useState([
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 1 },
+    { item: "Banner", message: "message", name: "Nice design with good battery. I love it.", id: 2 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 3 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 4 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 5 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 6 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 7 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 8 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 9 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 10 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 11 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 12 },
+    { item: "Product", message: "message", name: "Nice design with good battery. I love it.", id: 13 },
+  ]);
 
-  const addCartHandle = (e) => {
-    const defPrice = 30000;
-    setSelect(parseInt(e.target.value) + defPrice);
-    // setTotal(parseInt(select) + parseInt(designTxt));
+  const [pageNumber, setPageNumber] = useState(0);
 
-    // const a = parseInt(e.target.value);
-    // setThicknessPrice(parseInt(e.target.value));
-    setThicknessPrice(parseInt(e.target.value));
-    
-  };
-  const [quantityValue, setQuantityValue] = useState(0)
+  const commentPerPage = 3;
+  const commentView = pageNumber * commentPerPage;
 
-  const [change, setChange] = useState(100);
+  const ShowComments = comments
+  .slice(commentView, commentView + commentPerPage)
+    .map((comment) => (
+      <div class="card-body" key={comment.id}>
+        <div class="card-title">Comments from Verified Purchase</div>
+        <div>
+          <i class="las la-star"></i>
+          <i class="las la-star"></i>
+          <i class="las la-star"></i>
+          <i class="las la-star"></i>
+          <i class="las la-star"></i>
+        </div>
+        <div>
+          <p>{comment.item}</p>
+          <p>{comment.message}</p>
+          <p>22-03-2022 by {comment.name}</p>
+        </div>
+        <hr />
+      </div>
+    ));
 
-  const quantityHandle = (selected) => {
-    let selectedTxt = selected.options[selected.selectedIndex].text;
-    setQuantityTxt(selectedTxt.split(" - ")[1]);
+  const pagecount = Math.ceil(comments.length / commentPerPage);
 
-    setQuantityValue(parseInt(selected.options[selected.selectedIndex].value));
-
-  };
-
-console.log(quantityValue);
-
-
-  const settings = {
-    dots: true,
-    fade: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    pauseOnHover: false,
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
   };
 
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div class=" col-md-4 text-center ms-auto">
-        <p>{count}</p>
-        <button class="btn-info btn-block" onClick={increasecountHandle}>
-          100 - 200{" "}
-        </button>
-        <button class="btn-info btn-block" onClick={decreasecountHandle}>
-          201 - 300{" "}
-        </button>
-      </div>
-      <br />
-      <h1>{change}</h1>
-      <div class="text-center">
-        <select class="form-control readers" id="readers" onChange>
-          <option data-price="0" value="" selected>
-            100mm
-          </option>
-          <option data-price="2000" value="">
-            200mm
-          </option>
-          <option data-price="3000" value="">
-            300mm
-          </option>
-          <option data-price="4000" value="">
-            400mm
-          </option>
-        </select>
-        {/* <select value={change} onChange={changeHandle}>
-      <option value="0"></option>
-      <option value="10">1 - 2</option>
-      <option value="30">Man</option>
-      <option value="40">Ban</option> */}
-        {/* <option data-price="0" value="" selected >100mm</option>
-      <option data-price="2000" value="" >200mm</option>
-      <option data-price="3000" value="" >300mm</option>
-      <option data-price="4000" value="" >400mm</option> */}
-        {/* </select> */}
-      </div>
-      +
-      <br />
-      <select class="col-md-6 custom-select m-5" onChange={addCartHandle}>
-        <option value="0">Select</option>
-        <option value="10000">100mm</option>
-        <option value="20000">200mm</option>
-        <option value="30000">300mm</option>
-      </select>
-      <label htmlFor="">Choose Quantity</label>
-      <select
-        class="custom-select custom-select-sm mb-3"
-        onChange={(e) => quantityHandle(e.target)}
-      >
-        <option value="0">Select</option>
-        <option value="1000">1 - 20</option>
-        <option value="2000">21 - 40</option>
-        <option value="3000">41 - 50</option>
-        <option value="4000">51 - 60</option>
-      </select>
-      <h3 class="text-center">
-        <h1>{select}</h1>
-        <br /> {quantityTxt} / {quantityValue} /{thichnessPrice}
-        <p>{select + quantityValue + thichnessPrice}</p>
-      </h3>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div class="row col-md-6 offset-md-3">
-        <form action="" method="post">
-          <div class="form-group mt-3">
-            <label for="design">
-              <h5> Do you have a design?</h5>
-            </label>
-            <select
-              class="form-control custom-select"
-              id="design101"
-              onChange={(e) => setDesign(e.target.value)}
+      <header>
+        <div class="container-fluid" style={{ maxWidth: "100%;" }}>
+          <div class="row">
+            <div
+              class="col-md-12 bg-img-about"
+              style={{ backgroundImage: `url( ${ProductBg})` }}
             >
-              <option>Select</option>
-              <option value="yes-design">Yes</option>
-              <option value="design-for-me">No (Design for me)</option>
-              {/* <option value="design-for-me">Check out</option> */}
-            </select>
-
-            <div class="row">
-              <div class="col-md-8">
-                {designTxt === "yes-design" && (
-                  <>
-                    <input
-                      type="file"
-                      class="form-control mt-3 "
-                      id="upload-file-p"
-                    />
-                    <div id="upload-file-p" class="ml-1 mt-3">
-                      <p>
-                        <i class="far fa-check-circle mr-2"></i>Upload your
-                        design
-                      </p>
-                      <p>
-                        <i class="far fa-check-circle mr-2"></i>Your file should
-                        not be more than (200mb)
-                      </p>
-                    </div>
-                  </>
-                )}
-
-                {designTxt === "design-for-me" && (
-                  <>
-                    <div class="col-md-12">
-                      <textarea
-                        name=""
-                        class=" form-control mt-3"
-                        id="design-for-me"
-                        cols="30"
-                        rows="10"
-                        placeholder="(1) Tell us about your Business. (2) Describe design
-                          specification."
-                      ></textarea>
-                    </div>
-                  </>
-                )}
+              <div class="">
+                <div class=" text-center text-uppercase ">
+                  <h2 class="banner-h2-text hvr-underline-from-center">
+                    Plans
+                  </h2>
+                </div>
               </div>
             </div>
           </div>
-          <div class=" mt-4 d-none">
-            <button
-              class="add-to-cart-box add-to-cart hvr-bounce-to-right mr-2"
-              data-name="Shirt"
-              data-price="1.22"
-              type="submit"
-            >
-              Add to cart
-            </button>
+        </div>
+      </header>
+
+      {/* <div class="Business-Card-a"> */}
+      <div class="container-fluid" style={{ marginTop: "50px" }}>
+        <div class="row">
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-5 offset-md-1">
+                <div class="shirt-carousel">
+                  <ul id="glasscase" class="gc-start">
+                    <li>
+                      <img
+                        class="shirt-product-img"
+                        src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                        alt="Text"
+                        data-gc-caption="Your caption text"
+                      />
+                    </li>
+                    <li>
+                      <img class="shirt-product-img" src={Shirt1} alt="Text" />
+                    </li>
+                    <li>
+                      <img class="shirt-product-img" src={Shirt2} />
+                    </li>
+                    <li>
+                      <img class="shirt-product-img" src={Shirt3} alt="Text" />
+                    </li>
+                    <li>
+                      <img class="shirt-product-img" src={Shirt4} alt="Text" />
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="product-info">
+                  <p>
+                    note that all prices advertised and referred to on our
+                    website are exclusive of Value Added Tax (VAT). VAT is
+                    chargeable and payable by the buyer/client at the same time
+                    as the buyer/client pays the relevant fees.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-4 mt-3 product-md-style">
+                <h2 class="product-name-pr">Products</h2>
+                <h4 class="product-price"> &#x20A6; 30,000 </h4>
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptate consequatur sunt hic distinctio, natus labore quo,
+                  nobis tenetur ut sapiente ex modi quasi voluptates ratione
+                  maxime explicabo, nesciunt et est.
+                </p>
+
+                <div>
+                  <p>
+                    <i class="fa fa-check-circle mr-2"></i>2 x 5 feet
+                  </p>
+                  <p>
+                    <i class="fa fa-check-circle mr-2"></i>High Quality
+                  </p>
+                  <p>
+                    <i class="fa fa-check-circle mr-2"></i>Easy to set up
+                  </p>
+                </div>
+
+                <form action="" method="post">
+                  <div class="form-group mt-3">
+                    <label for="design">
+                      <h5> Do you have a design?</h5>
+                    </label>
+                    <select
+                      class="form-control custom-select"
+                      id="design101"
+                      onChange={(e) => setHaveDesign(e.target.value)}
+                    >
+                      <option selected>Select</option>
+                      <option value="yes-design">Yes</option>
+                      <option value="design-for-me">No (Design for me)</option>
+                      <option value="design-for-me">Check out</option>
+                    </select>
+                    <div class="row">
+                      {haveDesign === "yes-design" && (
+                        <div class="col-md-8">
+                          <input
+                            type="file"
+                            class="form-control mt-3 "
+                            id="upload-file-p"
+                          />
+                        </div>
+                      )}
+
+                      {haveDesign === "design-for-me" && (
+                        <div class="col-md-12">
+                          <textarea
+                            name=""
+                            class=" form-control mt-3"
+                            id="design-for-me"
+                            cols="30"
+                            rows="10"
+                            placeholder="(1) Tell us about your Business. (2) Describe design
+                          specification."
+                          ></textarea>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div class=" mt-4 d-none">
+                    <button
+                      class="add-to-cart-box add-to-cart hvr-bounce-to-right mr-2"
+                      data-name="Shirt"
+                      data-price="1.22"
+                      type="submit"
+                    >
+                      Add to cart
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            {/* <!-- product and description row end --> */}
+
+            <div class="container">
+              <div class="row col-md-8 offset-md-4">
+                <div class="col-md-4">
+                  <button
+                    class={
+                      optionsTab === 1
+                        ? "active-tab product-btn btn-lg rounded p-1"
+                        : "btn btn-outline-primary rounded p-1"
+                    }
+                    onClick={() => changeToggle(1)}
+                  >
+                    Product
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <button
+                    class={
+                      optionsTab === 2
+                        ? "active-tab product-btn btn-lg rounded p-1"
+                        : "btn btn-outline-primary rounded p-1"
+                    }
+                    onClick={() => changeToggle(2)}
+                  >
+                    Select features
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <button
+                    class={
+                      optionsTab === 3
+                        ? "active-tab product-btn btn-lg btn-outline-secodary rounded p-1"
+                        : "btn btn-outline-primary rounded p-1"
+                    }
+                    onClick={() => changeToggle(3)}
+                  >
+                    Plans
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr class="" />
+
+            {/* Select features, Plans, tab component begins */}
+
+            <div class="container">
+              <div
+                class={
+                  optionsTab === 1
+                    ? "container row col-md-10 offset-md-1 content-active"
+                    : "content"
+                }
+              >
+                <div class="shadow row rounded">
+                  <h3>Specifications</h3>
+                  <hr />
+                  <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">KEY FEATURES</h5>
+                        <hr />
+                        <ul>
+                          <li>Moring citrus taste</li>
+                          <li>Brilliant tasting Gin</li>
+                          <li>750ml</li>
+                          <li>
+                            Lorem ipsum dolor iendis minus inventore. Animi,
+                            reiciendis iendis minus inventore. Animi,
+                            reiciendis?
+                          </li>
+                          <li>Alcoholic drink</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          SPECIFICATION
+                          <hr />
+                        </h5>
+
+                        <ul>
+                          <li>SKU:</li>
+                          <li>Weight</li>
+                          <li>Colour:</li>
+                          <li>Main Material:</li>
+                          <li>Shop type:</li>
+                          <li>Nafdac No:</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class={
+                  optionsTab === 2
+                    ? "px-5 container shadow rounded row col-md-6 offset-md-3 content-active"
+                    : "content"
+                }
+              >
+                <label htmlFor="">Do you have a design for me</label>
+                <select class="custom-select custom-select-sm mb-3">
+                  <option selected>Select</option>
+                  <option value="1">Yes</option>
+                  <option value="2">No(Design for me)</option>
+                </select>
+                <label htmlFor="">Select Thickness</label>
+                <select
+                  class="custom-select custom-select-sm mb-3"
+                  onChange={addToCartHandler}
+                >
+                  <option value="0">Select</option>
+                  <option value="5000">100mm</option>
+                  <option value="10000">200mm</option>
+                  <option value="15000">300mm</option>
+                  <option value="20000">400mm</option>
+                  <option value="25000">500mm</option>
+                </select>
+                <label htmlFor="">Choose Quantity</label>
+                <select
+                  class="custom-select custom-select-sm mb-3"
+                  onChange={(e) => quantityHandler(e.target)}
+                >
+                  <option value="0">Select</option>
+                  <option value="5">1 - 20</option>
+                  <option value="10">21 - 40</option>
+                  <option value="15">41 - 50</option>
+                  <option value="20">51 - 60</option>
+                </select>
+                <div>
+                  <label htmlFor="">Checkbox Here</label>
+                  <select
+                    class="custom-select custom-select-sm mb-3"
+                    onClick={() => setCheckbox(!checkbox)}
+                  >
+                    <option>Select</option>
+                  </select>
+                  {checkbox && (
+                    <div>
+                      <div for="1">
+                        <input type="checkbox" />
+                        <span> First Checkbox</span>
+                      </div>
+                      <div for="2">
+                        <input type="checkbox" />
+                        <span> First Checkbox</span>
+                      </div>
+                      <div for="3">
+                        <input type="checkbox" />
+                        <span> First Checkbox</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="">Checkbox Here</label>
+                  <select
+                    class="custom-select custom-select-sm mb-3"
+                    onClick={() => setRadio(!radio)}
+                  >
+                    <option selected>Select</option>
+                  </select>
+                  {radio && (
+                    <div>
+                      <div for="1">
+                        <input type="radio" />
+                        <span> First Checkbox</span>
+                      </div>
+                      <div for="2">
+                        <input type="radio" />
+                        <span> First Checkbox</span>
+                      </div>
+                      <div for="3">
+                        <input type="radio" />
+                        <span> First Checkbox</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <section
+                class={
+                  optionsTab === 3
+                    ? "container row col-md-10 offset-md-1 content-active"
+                    : "content"
+                }
+              >
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="card ">
+                      <div class="price-header mt-5">
+                        <h4 class="text-center price-title bold">
+                          Business Starter
+                        </h4>
+                      </div>
+                      <div class="text-center mt-3">
+                        <p class="text-center price">
+                          $30<span class="price-currency"> usd</span>
+                        </p>
+                        <p class="price-duration">/user/month</p>
+                      </div>
+                      <div class="text-center mt-3">
+                        <button class="p-2 rounded price-btn btn-primary">
+                          Get started
+                        </button>
+                      </div>
+                      <hr />
+                      <div class="card-body ">
+                        <ul class="list-unstyled list-body">
+                          <li class="">
+                            <i class="las la-check"></i> Custom and secure
+                            business email
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 100 participant video
+                            meetings
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 30 GB cloud storage per
+                            user
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Security and management
+                            controls
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Standard Support
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card ">
+                      <div class="price-header mt-5">
+                        <h4 class="text-center price-title bold">
+                          Business Starter
+                        </h4>
+                      </div>
+                      <div class="text-center mt-3">
+                        <p class="text-center price">
+                          $30<span class="price-currency"> usd</span>
+                        </p>
+                        <p class="price-duration">/user/month</p>
+                      </div>
+                      <div class="text-center mt-3">
+                        <button class="p-2 rounded price-btn btn-primary">
+                          Get started
+                        </button>
+                      </div>
+                      <hr />
+                      <div class="card-body ">
+                        <ul class="list-unstyled list-body">
+                          <li class="">
+                            <i class="las la-check"></i> Custom and secure
+                            business email
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 100 participant video
+                            meetings
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 30 GB cloud storage per
+                            user
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Security and management
+                            controls
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Standard Support
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card ">
+                      <div class="price-header mt-5">
+                        <h4 class="text-center price-title bold">
+                          Business Starter
+                        </h4>
+                      </div>
+                      <div class="text-center mt-3">
+                        <p class="text-center price">
+                          $30<span class="price-currency"> usd</span>
+                        </p>
+                        <p class="price-duration">/user/month</p>
+                      </div>
+                      <div class="text-center mt-3">
+                        <button class="p-2 rounded price-btn btn-primary">
+                          Get started
+                        </button>
+                      </div>
+                      <hr />
+                      <div class="card-body ">
+                        <ul class="list-unstyled list-body">
+                          <li class="">
+                            <i class="las la-check"></i> Custom and secure
+                            business email
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 100 participant video
+                            meetings
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> 30 GB cloud storage per
+                            user
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Security and management
+                            controls
+                          </li>
+                          <li class="">
+                            <i class="las la-check"></i> Standard Support
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            {/* Select features, Plans, tab component ends */}
+
+            <hr class="mb-5" />
+
+            {/* <!-- collaps cont start here --> */}
+
+            <div class="container px-1 my-5">
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="card card-tab-cont">
+                    <div class="card-body p-b-0">
+                      {/* <!-- Nav tabs --> */}
+                      <ul class="nav nav-tabs customtab" role="tablist">
+                        <li class="nav-item text-center">
+                          <p
+                            class={
+                              toggle === 1
+                                ? "nav-link active home1"
+                                : "nav-link home1"
+                            }
+                            onClick={() => toggleTab(1)}
+                            data-toggle="tab"
+                            role="tab"
+                          >
+                            <span class="hidden-sm-up"></span>
+                            <span class="hidden-xs-down">Descriptions</span>
+                          </p>
+                        </li>
+                        <li class="nav-item text-center">
+                          <p
+                            class={
+                              toggle === 2
+                                ? "nav-link active req-sm-up"
+                                : "nav-link req-sm-up"
+                            }
+                            onClick={() => toggleTab(2)}
+                            data-toggle="tab"
+                            role="tab"
+                          >
+                            <span class="hidden-sm-up"></span>
+                            <span class="hidden-xs-down">Reviews</span>
+                          </p>
+                        </li>
+                        <li class="nav-item text-center">
+                          <p
+                            class={
+                              toggle === 3 ? "nav-link active" : "nav-link"
+                            }
+                            onClick={() => toggleTab(3)}
+                            data-toggle="tab"
+                            role="tab"
+                          >
+                            <span class="hidden-sm-up"></span>
+                            <span class="hidden-xs-down">Upload</span>
+                          </p>
+                        </li>
+                        <li class="nav-item text-center">
+                          <p
+                            class={
+                              toggle === 4 ? "nav-link active" : "nav-link"
+                            }
+                            onClick={() => toggleTab(4)}
+                            data-toggle="tab"
+                            role="tab"
+                          >
+                            <span class="hidden-sm-up"></span>
+                            <span class="hidden-xs-down">
+                              Additional Description
+                            </span>
+                          </p>
+                        </li>
+                      </ul>
+                      {/* <!-- Tab panes --> */}
+                      <div class="tab-content">
+                        <div
+                          class={
+                            toggle === 1
+                              ? "tab-pane tabs-content-active active mt-2"
+                              : "tabs-content"
+                          }
+                          id="description"
+                          role="tabpanel"
+                        >
+                          <div class="row">
+                            <div class=" col-md-12">
+                              <p class="mt-4 real-gen-color ">
+                                Make an impressive business card with specialty
+                                finish that stands out from the rest. Our
+                                business cards comes in various options; Matt
+                                Card with Matt Lamination
+                              </p>
+                              <p class=" real-gen-color "> Full-Color Print </p>
+                              <p class="real-gen-color ">
+                                Available in Different Thickness (500gsm,
+                                800gsm)
+                              </p>
+                              <p class="real-gen-color ">
+                                Front and Back Print with Special Effects Option
+                              </p>
+                              <p class="real-gen-color ">
+                                Minimum Order Quantity –
+                                <strong> 100 Units </strong>
+                              </p>
+                              <p class="real-gen-color ">
+                                <Link
+                                  to=""
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Contact us,
+                                </Link>
+                                for more inquiries.
+                              </p>
+
+                              <div class="ul-square-div">
+                                <ul class="ul-sqaure real-gen-color">
+                                  <li>Coffee</li>
+                                  <li>Tea</li>
+                                  <li>Coca Cola</li>
+                                </ul>
+                              </div>
+
+                              <div>
+                                <table
+                                  class="table table-hover"
+                                  style={{ color: "#1F4395;" }}
+                                >
+                                  <thead>
+                                    <tr>
+                                      <th>Firstname</th>
+                                      <th>Lastname</th>
+                                      <th>Email</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>John</td>
+                                      <td>Doe</td>
+                                      <td>john@example.com</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Mary</td>
+                                      <td>Moe</td>
+                                      <td>mary@example.com</td>
+                                    </tr>
+                                    <tr>
+                                      <td>July</td>
+                                      <td>Dooley</td>
+                                      <td>july@example.com</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class={
+                            toggle === 2
+                              ? "tab-pane tabs-content-active active "
+                              : "tab-pane tabs-content "
+                          }
+                          id="review"
+                          role="tabpanel"
+                        >
+                          <div class="card">
+                            <div class="card-header">
+                              Verified Customer Feedback
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-5">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    Verified Ratings(500)
+                                  </div>
+                                  <div
+                                    class="card text-white bg-secondary mb-3"
+                                    style={{ maxWidth: "18rem" }}
+                                  >
+                                    <div class="card-body">
+                                      4.2/5
+                                      <div>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star"></i>
+                                        <i class="las la-star-half"></i>
+                                      </div>
+                                      <div>{425} verified ratings</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-sm-7">
+                                <ShowComments />
+
+                                <ReactPaginate
+                                  previousLabel={"Previous"}
+                                  nextLabel={"Next"}
+                                  pageCount={pagecount}
+                                  onPageChange={changePage}
+                                  containerClassName={"paginationBttns"}
+                                  previousLinkClassName={"previousBttn"}
+                                  nextLinkClassName={"nextBttn"}
+                                  disabledClassName={"paginationDisabled"}
+                                  activeClassName={"paginationActive"}
+                                />
+
+                                {/* <div class="card-body">
+                                  <div class="card-title">
+                                    Comments from Verified Purchase
+                                  </div>
+                                  <div>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                    <i class="las la-star"></i>
+                                  </div>
+                                  <div>
+                                    <p>Nice</p>
+                                    <p>
+                                      Nice design with good battery. I love it.
+                                    </p>
+                                    <p>22-03-2022 by Kushmo</p>
+                                  </div>
+                                  <hr />
+                                </div> */}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class={
+                            toggle === 3
+                              ? "tab-pane tabs-content-active active pt-2"
+                              : "tab-pane tabs-content pt-2"
+                          }
+                          id="upload"
+                          role="tabpanel"
+                        >
+                          <div class="row">
+                            <div class=" col-md-12">
+                              <p class=" mt-4 real-gen-color mb-4">
+                                We accept artwork files in the following
+                                formats:
+                              </p>
+                              <p class=" mt-4 real-gen-color ">
+                                PDF, EPS, AI, TIFF, PSD, PNG
+                              </p>
+                              <p class=" mt-4 real-gen-color ">
+                                Your artwork should be created in CMYK mode and
+                                100-300 dpi quality. If you are using vector
+                                files like PDF, AI, or EPS please outline all
+                                fonts. When you upload a PSD file please merge
+                                all visible layers. Create your artwork files in
+                                the exact size that you are ordering, with no
+                                bleed, and no crop marks.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class={
+                            toggle === 4
+                              ? "tab-pane tabs-content-active active pt-2"
+                              : "tab-pane tabs-content pt-2"
+                          }
+                          id="review"
+                          role="tabpanel"
+                        >
+                          <p>Other description content goes</p>
+                        </div>
+                      </div>
+                      {/* <!-- tab content end --> */}
+                    </div>
+                    {/* <!-- card body end --> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* <!-- colaps end  --> */}
+
+            {/* <!-- Other category start here --> */}
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 offset-md-1 mb-5">
+                  <h4 class="other-product hvr-underline-from-center mb-1">
+                    Other Products
+                  </h4>
+                </div>
+
+                {/* <!-- popular product --> */}
+                {/* <!-- popup modal --> */}
+
+                {/* <!-- The Modal --> */}
+                <div id="myModal" class="modal">
+                  {/* <!-- The Close Button --> */}
+                  <span class="close">&times;</span>
+
+                  {/* <!-- Modal Content (The Image) --> */}
+                  <img class="modal-content" id="img01" />
+
+                  {/* <!-- Modal Caption (Image Text) --> */}
+                  <div id="caption"></div>
+                </div>
+
+                <div class="col-md-3 offset-md-1 popular-back">
+                  <div class="item">
+                    <img
+                      src={BannerImg}
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg"
+                      alt="Banner"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to=""> Banner</Link>
+                    <i class="fa fa-arrow-circle-right  px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back">
+                  <div class="item">
+                    <img
+                      src={TshirtImg}
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg2"
+                      alt="T-Shirts"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">T-Shirts</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back">
+                  <div class="item">
+                    <img
+                      src={FlyerImg}
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg3"
+                      alt="Flyers"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">Flyers</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/vehicle-branding-images.png"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg4"
+                      alt="Vehicle Branding"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to=""> Vehicle Branding</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/hard-cover-notepad.jpg"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg5"
+                      alt="Hard Cover Notepad"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">Hard Cover Notepad</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/id-card.jpg"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg6"
+                      alt="ID Card"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">ID Card </Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/Bottle.png"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg7"
+                      alt="Vehicle Branding"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">Bottle Branding</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/business-card.png"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg8"
+                      alt="Business Card"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to=""> Business Card</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+                <div class="col-md-3 offset-md-1 popular-back  d-none ">
+                  <div class="item">
+                    <img
+                      src="assets/img/carrier-bags.jpg"
+                      class="popular-pro-img img-responsive hvr-grow "
+                      height="200px"
+                      id="myImg9"
+                      alt="Carrier Bag"
+                    />
+                  </div>
+                  <p class="hvr-forward">
+                    <Link to="">Carrier Bag</Link>
+                    <i class="fa fa-arrow-circle-right px-2"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* <!-- other product end --> */}
           </div>
-        </form>
+          {/* <!-- div md-9 end --> */}
+
+          <div class="col-md-2 ">
+            <div class="cont-stick-pr2 sticky-md-non">
+              <div>
+                <h4 class="side-content">How is your website’s SEO?</h4>
+                <p class="side-more-text">
+                  Use our free tool to get your score calculated in under 60
+                  seconds.
+                </p>
+              </div>
+              <form role="form">
+                <div class="form-group seo-div-group">
+                  <input
+                    type="text"
+                    placeholder="http://your-url.com"
+                    class="form-control"
+                    id="email"
+                  />
+                </div>
+                <button type="submit" class="get-seo-btn">
+                  Get Your SEO Score
+                </button>
+              </form>
+            </div>
+
+            <div class="cont-stick-pr2 sticky-md-non">
+              <div>
+                <h4 class="side-content-ai">
+                  AI POWERED SOCIAL ACCOUNT GROWTH CALCULATOR
+                </h4>
+                <p class="side-more-text-ai">
+                  Enter your Social Account, we will provide you with helpful
+                  tips, tricks and growth estimations
+                </p>
+                <p
+                  class="text-white text-center"
+                  style={{ fontSize: "10px", padding: "7px;" }}
+                >
+                  100% free to use - Powered by AI
+                </p>
+              </div>
+              <form role="form">
+                <div class="form-group seo-div-group">
+                  <input
+                    type="text"
+                    placeholder="FB or IG Url"
+                    class="form-control"
+                    id="email"
+                  />
+                </div>
+                <button type="submit" class="get-seo-btn">
+                  Get Started
+                </button>
+              </form>
+            </div>
+
+            <div class="cont-stick-pr">
+              <h4 class="call-strategy-pr text-white">
+                Can't find your order?
+              </h4>
+              <h6 class="call-strategy-pr-desc">Request a Free Quote.</h6>
+              <p
+                class="p-request-pr wow animate__fadeInRight"
+                data-wow-duration=".5s"
+              >
+                1. We will discuss your business and marketing goals.
+              </p>
+              <p
+                class="p-request-pr wow animate__fadeInRight"
+                data-wow-duration=".5s"
+              >
+                2. How our unique profitability framework can be applied to your
+                business.
+              </p>
+              <p
+                class="p-request-pr wow animate__fadeInRight"
+                data-wow-duration=".5s"
+              >
+                3. We’ll help you understand what questions you need to be
+                asking in order to double or triple your sales and revenue
+              </p>
+              <div class=" text-center ">
+                <Link
+                  class="Request-Free-Qoute hvr-bounce-to-right mr-2"
+                  type="submit"
+                >
+                  Request Free Qoute
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* <!-- div md-3 end sticky --> */}
+        </div>
+        {/* <!-- row ends --> */}
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="container slide-home">
-        <div>
-          <h2>Fade</h2>
-          <Slider {...settings}>
-            <div>
-              <img src={SlideImg1} />
+
+      {/* <!-- cont-fluid end --> */}
+
+      {/* <!-- fix bottom Add to cart--> */}
+
+      <div class="fixed-bottom fx-bottom-div">
+        <div class="fix-bottom-h4">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-10 offset-md-1 product-text-aligns">
+                  <img src={TshirtImg} height="45px" alt="product image" />
+                  <span class="product-name"> Business Card </span>
+                </div>
+              </div>
             </div>
-            <div>
-              <img src={SlideImg2} />
+            <div class="col-md-4">
+              <h4>Quantity: {quantityTxt}</h4>
+              <p id="quantity-val"></p>
             </div>
-            <div>
-              <img src={SlideImg3} />
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>
+                    &#8358;{" "}
+                    <span class="product-price2">
+                      {basePrice + quantityVal + addToCart}
+                    </span>
+                  </h4>
+                </div>
+                <div class="col-md-6">
+                  <form role="form">
+                    <button
+                      type="submit"
+                      class="add-to-cart"
+                      ata-name="card"
+                      data-price=""
+                    >
+                      Add to Cart
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div>
-              <img src={SlideImg4} />
-            </div>
-          </Slider>
+          </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
 
-export default Test;
+export default Products;
