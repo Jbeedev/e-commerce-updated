@@ -79,7 +79,7 @@ const Home = () => {
                     href="order"
                     className="aj-request hvr-bounce-to-right  mr-3"
                   >
-                    REQUEST A QUOTE
+                    REQUEST A Budget
                   </a>
                   <a
                     href="contact"
