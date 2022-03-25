@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 //import BackToTop from "react-back-to-top";
 import { AnimationOnScroll } from "react-animation-on-scroll";
@@ -1804,13 +1807,13 @@ const Home = () => {
           </p>
         </AnimationOnScroll>
         <div className="text-center mt-5">
-          <a
-            href="order.html"
+          <Link
+            to="/contact"
             className="talk-to-box hvr-bounce-to-right wow animate__fadeInUp"
             data-wow-duration="2s"
           >
             Talk to Us
-          </a>
+          </Link>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import "./ComingSoon.css";
 
 export default function ComingSoon() {
@@ -6,8 +7,10 @@ export default function ComingSoon() {
     <div>
       <div class="Coming-soon-bg">
         <div class="middle">
-          <h1>COMING SOON</h1>
           <hr />
+          <p className="small">Please click the link below to visit the Portal</p>
+          <Link class="portal-link" to='/tenpluslabs-portal'>Go to Portal Page</Link>
+          <hr className="mt-3"/>
         </div>
       </div>
     </div>

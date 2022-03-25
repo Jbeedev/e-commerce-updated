@@ -20,3 +20,13 @@
     margin: auto;
     width: 40%;
   }
+  .portal-link {
+    color: aliceblue;
+    background-color: rgb(56, 117, 250);
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10px;
+  }
+  .portal-link:hover {
+    color: aliceblue;
+  }

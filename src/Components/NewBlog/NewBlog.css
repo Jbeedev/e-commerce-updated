@@ -154,7 +154,14 @@
       opacity: 0.25; } }
   
   
-      /* loader end */
+  
+    /* loader end */
+
+
+    /* React styling */
+    .blog-tags li {
+      list-style: none;
+    }
   
     .blog-btn-submit {
       border-color: #F44B18;
@@ -715,6 +722,7 @@
     padding: 9px 24px 7px 24px;
     text-align: center;
     transition: all 0.4s;
+    text-decoration: none;
   }
   
   .blog-sidebar .tags-widget .tags-list li a:hover {
@@ -984,6 +992,13 @@
       display: none;
     }
   }
+
+
+  
+  
+
+
+
   
   @media (min-device-width: 769px) and (max-device-width: 1024px) {
     .color-overlay-blog {

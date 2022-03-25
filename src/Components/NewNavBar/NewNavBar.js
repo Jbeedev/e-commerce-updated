@@ -32,17 +32,17 @@ export default function Navbar() {
           </Link>
         </li>
         <li class="nav-item  pt-3">
-          <Link class="nav-link text-white" to="#">
+          <Link class="nav-link text-white" to="/training">
             Training
           </Link>
         </li>
         <li class="nav-item  pt-3">
-          <Link class="nav-link text-white" to="/comingsoon">
+          <Link class="nav-link text-white" to="/marketplace">
             MarketPlace
           </Link>
         </li>
         <li class="nav-item  pt-3">
-          <Link class="nav-link  text-white " to="/mktcomingsoon">
+          <Link class="nav-link  text-white " to="/portal">
             Portal
           </Link>
         </li>
