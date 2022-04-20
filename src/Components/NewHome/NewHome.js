@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import WhyChooseUs from "./WhyChooseUs";
+import Testimonial from "./Testimonial";
+import TalkToUs from "./TalkToUs";
 
-
+import "./NewHome.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import BackToTop from "react-back-to-top";
+import OurTools from "./OurTools";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,16 +19,6 @@ import ImgImg4 from "../assets/Images/TenPlus-Banner-003.png";
 import ImgImg5 from "../assets/Images/What-we-do-tenplus.png";
 import ImgImg6 from "../assets/Images/app-logo-type.png";
 import WorldMap from "../assets/Images/word-map-globe-tenplus.png";
-import Testimonial1 from "../assets/Images/Testimonial001.png";
-import Testimonial2 from "../assets/Images/Testimonial.png";
-import Testimonial3 from "../assets/Images/Testimonial01.png";
-
-import "./NewHome.css";
-//import OwlCarousel from 'react-owl-carousel';
-//import 'owl.carousel/dist/assets/owl.carousel.css';
-//import 'owl.carousel/dist/assets/owl.theme.default.css';
-import Marquee from "react-fast-marquee";
-import OurTools from "./OurTools";
 
 const Home = () => {
   const [toggleState, setToggleState] = useState(0);
@@ -46,8 +39,6 @@ const Home = () => {
     autoplay: true,
     pauseOnHover: false,
   };
-
-  
 
   return (
     <div>
@@ -79,7 +70,7 @@ const Home = () => {
                     href="order"
                     className="aj-request hvr-bounce-to-right  mr-3"
                   >
-                    REQUEST A Budget
+                    REQUEST A QUOTE
                   </a>
                   <a
                     href="contact"
@@ -324,7 +315,7 @@ const Home = () => {
             <div className="map_container col-md-8">
               <div
                 className="service-circle-bg"
-                style={{ width: `70%`, backgroundImage: `url(${WorldMap})` }}
+                style={{backgroundImage: `url(${WorldMap})` }}
               >
                 {/*<img className="img-fluid img-thumbnail" alt="web development company near me"
                           src={WorldMap}/>*/}
@@ -1558,271 +1549,21 @@ const Home = () => {
 
       {/* <!-- service end for mobile --> */}
 
-      <div className="cont-choose-w mr-3 ml-3">
-        <div className="text-center">
-          <AnimationOnScroll
-            animateIn="animate__fadeInRigh"
-            animateOut="animate__fadeInRight"
-          >
-            <h2
-              className="why-you-choose hvr-underline-from-center wow animate__fadeInDown"
-              data-wow-duration="4s"
-              data-wow-delay="0.1s"
-            >
-              WHY CHOOSE US
-            </h2>
-          </AnimationOnScroll>
-        </div>
-
-        <div className="container_choose">
-          <div className="row">
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInLeft"
-                animateOut="animate__fadeInLeft"
-              >
-                <p
-                  className="wow animate__fadeInLeft"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt  fa-lg"></i>
-                  Attention to Project Details
-                </p>
-              </AnimationOnScroll>
-            </div>
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInLeft"
-                animateOut="animate__fadeInLeft"
-              >
-                <p
-                  className="wow animate__fadeInRight"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt fa-lg"></i>
-                  Innovation and Creativity
-                </p>
-              </AnimationOnScroll>
-            </div>
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInLeft"
-                animateOut="animate__fadeInLeft"
-              >
-                <p
-                  className="wow animate__fadeInLeft"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt  fa-lg"></i>
-                  Affordable Pricing
-                </p>
-              </AnimationOnScroll>
-            </div>
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInRigh"
-                animateOut="animate__fadeInRight"
-              >
-                <p
-                  className="wow animate__fadeInRight"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt fa-lg"></i>
-                  Plan For success
-                </p>
-              </AnimationOnScroll>
-            </div>
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInRigh"
-                animateOut="animate__fadeInRight"
-              >
-                <p
-                  className="wow animate__fadeInLeft"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt  fa-lg"></i>
-                  Expert Delivery
-                </p>
-              </AnimationOnScroll>
-            </div>
-            <div className="col-sm-12 col-md-5 offset-md-1 container-box-w">
-              <AnimationOnScroll
-                animateIn="animate__fadeInRigh"
-                animateOut="animate__fadeInRight"
-              >
-                <p
-                  className="wow animate__fadeInRight"
-                  data-wow-duration=".2s"
-                  data-wow-delay="0s"
-                >
-                  {" "}
-                  <i className="fa fa-long-arrow-right h-arrow-rt fa-lg"></i>
-                  Deliver on Schedule
-                </p>
-              </AnimationOnScroll>
-            </div>
-          </div>
-        </div>
-      </div>
+      <WhyChooseUs />
 
       {/* <!-- testimonial --> */}
 
-      <div className="container_testimonial ">
-        <div className="text-center mt-5">
-          <h2 className="why-you-choose hvr-underline-from-center">
-            Testimonial
-          </h2>
-        </div>
-        <div className="row pt-3 ml-3">
-          <div className="col-sm-6 col-md-4">
-            <div className="card mr-3 pb-3">
-              <div className="mt-2">
-                {" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>
-                <span className="fa fa-star active-star"></span>{" "}
-              </div>
-              <div className="main head-review pb-2 pt-1">Great Service</div>
-              <div className="testimonial">
-                {" "}
-                “TenPlus Digital Labs has been of such a tremendous help in
-                getting us focused more on our marketing and advertising plans.
-                I highly recommend TenPlus and their outstanding team on any
-                work related to business promotion."{" "}
-              </div>
-              <div className="d-flex flex-row profile pt-4 mt-auto">
-                <img src={Testimonial1} alt="" className="rounded-circle" />
-                <div className="d-flex flex-column pl-2">
-                  <div className="name">Adekunle </div>
-                  <p className="text-muted designation">
-                    CEO of Brand O Textiles
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm-6  col-md-4">
-            <div className="card mr-3 pb-3">
-              <div className="mt-2">
-                {" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-              </div>
-              <div className="main head-review pb-2 pt-1">Great Service</div>
-              <div className="testimonial">
-                {" "}
-                “At first, I was skeptical about the need to create a website. I
-                later figured out of many different ways to monetize my website,
-                and add to my revenue, all thanks to TenPlus Digital Labs. They
-                are good at what they do."{" "}
-              </div>
-              <div className="d-flex flex-row profile pt-4 mt-auto">
-                {" "}
-                <img src={{ Testimonial2 }} alt="" className="rounded-circle" />
-                <div className="d-flex flex-column pl-2">
-                  <div className="name">Abdulkareem Age</div>
-                  <p className="text-muted designation">
-                    CEO of Great Olms Apartment
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm-6  col-md-4">
-            <div className="card mr-3 pb-3">
-              <div className="mt-2">
-                {" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>{" "}
-                <span className="fa fa-star active-star"></span>
-                <span className="fa fa-star active-star"></span>{" "}
-              </div>
-              <div className="main head-review pb-2 pt-1">Great Service</div>
-              <div className="testimonial">
-                {" "}
-                “I have learnt a lot from the founder of the company for some
-                years now, and I can tell his company was built for success even
-                before taking my latest project to him. And as usual, he and his
-                team did excellently well in designing and printing all the
-                materials for my wedding."{" "}
-              </div>
-              <div className="d-flex flex-row profile pt-4 mt-auto">
-                {" "}
-                <img src={Testimonial3} alt="" className="rounded-circle" />
-                <div className="d-flex flex-column pl-2">
-                  <div className="name">Toria Ubani</div>
-                  <p className="text-muted designation">CEO of Tee Fashion</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Testimonial />
 
       {/* <!-- testimonial --> */}
 
       {/* <!-- project  --> */}
 
-      <div className="cont-mind-project text-center mr-3 ml-3">
-        <AnimationOnScroll
-          animateIn="animate__fadeInLeft"
-          animateOut="animate__fadeInLeft"
-        >
-          <h4
-            className="h4-project-port wow animate__fadeInLeft"
-            data-wow-duration=".5s"
-          >
-            {" "}
-            Have Any Project in Mind{" "}
-          </h4>
-        </AnimationOnScroll>
-        <AnimationOnScroll
-          animateIn="animate__fadeInLeft"
-          animateOut="animate__fadeInRight"
-        >
-          <p
-            className="p-project-port wow animate__fadeInRight"
-            data-wow-duration=".5s"
-          >
-            Get in Touch with Us Today
-          </p>
-        </AnimationOnScroll>
-        <div className="text-center mt-5">
-          <Link
-            to="/contact"
-            className="talk-to-box hvr-bounce-to-right wow animate__fadeInUp"
-            data-wow-duration="2s"
-          >
-            Talk to Us
-          </Link>
-        </div>
+      <TalkToUs />
+
+      <div>
+        <OurTools />
       </div>
-
-      {/* <!-- project --> */}
-
-      {/* <!-- partners --> */}
-
-      {/* < OurTools /> */}
-
 
       {/* <!-- partners --> */}
 

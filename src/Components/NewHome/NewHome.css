@@ -1,7 +1,3 @@
-/* .mr-3 {
-
-} */
-
 .customer-logos {
   margin-top: 50px;
 }
@@ -136,4 +132,8 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+}
+
+.talk-to-box {
+  text-decoration: none;
 }

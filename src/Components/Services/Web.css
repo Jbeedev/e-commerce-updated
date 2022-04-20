@@ -8,3 +8,10 @@
     height: 50px;
     width: 50px;
 }
+.service-display{
+    display: none;
+}
+
+.service-btn-active{
+    border: 2px solid blue;
+}

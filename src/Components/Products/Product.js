@@ -13,6 +13,7 @@ import Shirt4 from "../assets/Images/Bottle.png";
 import Reviews from "./Reviews";
 
 const Products = () => {
+  
   const [toggle, setToggle] = useState(1);
 
   const toggleTab = (index) => {
